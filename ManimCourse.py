@@ -1,10 +1,5 @@
-from __future__ import division
-from time import strptime
-from tkinter import font
-
 from matplotlib import mathtext
 from manimlib import *
-#from manimlib.mobject.svg import brace
 import numpy as np
 
 class Opening(Scene):
