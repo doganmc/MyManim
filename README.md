@@ -8,10 +8,10 @@ To Open ManimCourse.py:
       .\mgl\Scripts\activate
       pip freeze
       
-  2-) For Opening scene, Apply the following command:
+  2-) To play Opening scene, Apply the following command:
       
       manimgl ManimCourse.py Opening
       
-  3-) For Plant scene, Apply the following command:
+  3-) To play Plant scene, Apply the following command:
   
       manimgl ManimCourse.py Plant
