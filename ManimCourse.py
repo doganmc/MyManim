@@ -1,6 +1,3 @@
-#from tkinter import END
-#from token import RIGHTSHIFT
-#from turtle import end_fill, width
 from __future__ import division
 from time import strptime
 from tkinter import font
@@ -163,36 +160,3 @@ class Plant(Scene):
 
     def get_text(self, strp):
         return Text(strp)
-
-
-
-class ColoringEquations(Scene):
-#Grouping and coloring parts of equations
-    def construct(self):
-        line1=Tex("\\text{The vector }", "\\vec{F}_{net}", "\\text{ is the net force on object of mass }")
-        line1.set_color_by_tex("force", BLUE)
-        line2=Tex("m", "\\text{ and acceleration }", "\\vec{a}", ". ")
-        line2.set_color_by_tex_to_color_map({
-        "m": YELLOW,
-        "{a}": RED
-        })
-        sentence=VGroup(line1,line2)
-        sentence.arrange(DOWN, buff=MED_LARGE_BUFF)
-        self.play(Write(sentence))
-
-
-########
-class LineTest(Scene):
-    def construct(self):
-        t1 = Tex("129")
-        t2 = Tex("+073")
-        t_group = VGroup(t1,t2)
-        t_group.arrange(DOWN, aligned_edge=RIGHT)
-
-        line = Line(LEFT, RIGHT)
-        line.set_width(t_group.get_width() + 0.2)
-        line.next_to(t_group, DOWN, buff=0.2, aligned_edge=LEFT)
-
-        self.add(t_group, line)
-        self.wait()
-########
