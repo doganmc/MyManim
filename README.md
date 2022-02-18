@@ -1,6 +1,6 @@
 # MyManim
 
-To Open ManimCourse.py:
+To open ManimCourse.py:
 
   1-) Go to ManimGL Folder and open Command Prompt. Apply the following commands:
     
