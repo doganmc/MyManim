@@ -111,7 +111,7 @@ class GraphInteractive(Scene):
             #print("Cleared")
 
             if  self.biggercircle != None and self.dotbig != None and self.unitarrow2 != None:
-                self.play(FadeOut(self.smallcircle), FadeOut(self.dotsmall), FadeOut(self.unitarrow3))
+                self.play(FadeOut(self.biggercircle), FadeOut(self.dotbig), FadeOut(self.unitarrow2))
                 self.biggercircle = None
                 self.dotbig = None
                 self.unitarrow2 = None
