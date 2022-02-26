@@ -13,10 +13,10 @@ class GraphFollow(Scene):
 				"stroke_width": 4,
 			},
 			"y_axis_config": {
-				"include_tip": True
+				"include_tip": True,
 			},
             "x_axis_config": {
-                "include_tip": True
+                "include_tip": True,
             }
 		}
 	}
@@ -51,26 +51,6 @@ class GraphFollow(Scene):
 
         self.play(FadeIn(axes), FadeIn(labels))
 
-        # pole = 1
-        # polepoint = Dot(color=ORANGE).scale(1).move_to(axes.c2p(pole))
-        # self.play(ShowCreation(polepoint))
-
-        # while pole < 3:
-        #     pole += 0.01
-        #     self.wait(0.001)
-
-        # self.play(ShowCreation(polepoint))
-
-        # x = 1
-        # def movePole(self):
-        #     self.become( Dot(color=ORANGE).move_to(axes.c2p(x)) )
-        # axes.add_updater(movePole)
-        # #self.add(axes)
-
-        # while x < 3:
-        #     x += 0.01
-        #     self.wait(0.001)
-
         dot = Dot(color=ORANGE)
         dot2 = Dot(color=ORANGE)
         dot.move_to(axes.c2p(1, 0))
@@ -82,3 +62,23 @@ class GraphFollow(Scene):
         self.play(dot.animate.move_to(axes.c2p(-2, 0)), dot2.animate.move_to(axes.c2p(-2, 0)))
         self.wait()
         self.play(dot.animate.move_to(axes.c2p(-1, 1)), dot2.animate.move_to(axes.c2p(-1, -1)))
+
+        leftline = DashedLine(start=DOWN, end=UP).set_color(BLUE)
+        rightline = DashedLine(start=DOWN, end=UP).set_color(BLUE)
+
+        leftline.move_to(axes.c2p(-1,0)).set_opacity(0.2)
+        rightline.move_to(axes.c2p(1,0)).set_opacity(0.2)
+
+        self.play(FadeIn(leftline), FadeIn(rightline))
+
+        unitcircle = Circle(color = GREEN, radius=0.8).move_to(axes.c2p(0,0)).set_fill(GREEN, opacity=0.5)
+
+        self.play(FadeIn(unitcircle))
+
+        dotx = Dot( (0, 0, 0)  ).set_color(YELLOW).move_to(axes.c2p(1,0)).scale(0.8).set_opacity(0.5)
+
+        unitarrow = VMobject().move_to(axes.c2p(0,0))
+        unitarrow.add_updater(lambda x: x.become(Line(unitcircle.get_center(), dotx.get_center()).set_color(PINK))) #UPDATER
+        self.add(unitarrow)
+
+        self.play(MoveAlongPath(dotx, unitcircle), rate_func=linear, run_time=5)
