@@ -1,3 +1,0 @@
-from manim import *
-
-mehaba
