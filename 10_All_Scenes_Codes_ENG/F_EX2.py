@@ -813,11 +813,11 @@ class F_EX2_ENG(Scene):
                 self.play( ReplacementTransform(e2,col2[5]),**play_kw_fast )
                 self.play( ReplacementTransform(e3,col3[5]),**play_kw_fast )
 
-                self.play(FadeToColor(col1[0],BLUE_E), FadeToColor(col1[1],YELLOW_E), FadeToColor(col1[2],GREEN), FadeToColor(col1[3],ORANGE), FadeToColor(col1[4],TEAL))
+                self.play(FadeOut(rectelem), FadeOut(crl1), FadeOut(crl2), FadeOut(rectver), FadeOut(recthor))
                 
                 self.wait(2)
 
-                self.play(FadeOut(rectelem), FadeOut(crl1), FadeOut(crl2), FadeOut(rectver), FadeOut(recthor))
+                self.play(FadeToColor(col1[0],BLUE_E), FadeToColor(col1[1],YELLOW_E), FadeToColor(col1[2],GREEN), FadeToColor(col1[3],ORANGE), FadeToColor(col1[4],TEAL))
                 
                 self.wait(2)
 
@@ -844,7 +844,7 @@ class F_EX2_ENG(Scene):
                 self.wait(5)
                 
                 expl1 = Tex(r"p(s)", r"\text{ is a Hurwitz polynomial if}")
-                conds = Tex(r"13-K > 0", r"\ \land \ ", r"\frac{-K^2 - 14K + 21}{13-K} > 0", r"\ \land \ ", r"K>0")
+                conds = Tex(r"13-K > 0", r"\ \land \ ", r"-\dfrac{K^2 - 14K + 21}{13-K} > 0", r"\ \land \ ", r"K>0")
 
                 conds[0].set_color(ORANGE)
                 conds[2].set_color(TEAL)
@@ -901,7 +901,7 @@ class F_EX2_ENG(Scene):
                     self.add(dotc1)
                     self.add(dotd1)
                     self.add(vt)
-                    self.wait(0.001)
+                    self.wait(0.001) # this should not be commented out.
 
                 # # # ADD THIS PART IF NEEDED. THIS MAKES THE OPPOSITE OF THE LOOP ABOVE.
                 # while val > 1.72:

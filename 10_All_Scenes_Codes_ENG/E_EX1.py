@@ -89,7 +89,7 @@ class E_EX1_ENG(Scene):
                 n4ton5.next_to(an4,DOWN)
                 an5.next_to(n4ton5,DOWN)
 
-                zzgroup=VGroup(an,nton1,an1,n1ton2,an2,n2ton3,an3,n3ton4,an4,n4ton5,an5).next_to(poly1,DOWN,buff=LARGE_BUFF) #,n5ton6,an6,an7)
+                zzgroup=VGroup(an,nton1,an1,n1ton2,an2,n2ton3,an3,n3ton4,an4,n4ton5,an5).next_to(poly1,DOWN,buff=LARGE_BUFF)
                 
                 play_kw = {"run_time": 4}
                 self.play(Write(zzgroup),**play_kw)
@@ -507,13 +507,13 @@ class E_EX1_ENG(Scene):
 
                 self.play( ReplacementTransform(d2,col2[4]),**play_kw_fast )
 
-                self.play(FadeToColor(col1[0],BLUE_E), FadeToColor(col1[1],YELLOW_E), FadeToColor(col1[2],GREEN), FadeToColor(col1[3],ORANGE))
+                self.play(FadeOut(rectelem), FadeOut(crl1), FadeOut(crl2), FadeOut(rectver), FadeOut(recthor))
 
                 self.wait(2)
 
-                self.play(FadeOut(rectelem), FadeOut(crl1), FadeOut(crl2), FadeOut(rectver), FadeOut(recthor))
+                self.play(FadeToColor(col1[0],BLUE_E), FadeToColor(col1[1],YELLOW_E), FadeToColor(col1[2],GREEN), FadeToColor(col1[3],ORANGE))
 
-                self.wait(4)
+                self.wait(2) #it was 4
 
                 col1box = SurroundingRectangle(col1)
                 self.play(ShowCreation(col1box))

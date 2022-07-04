@@ -1218,10 +1218,16 @@ class D_TABLE_ENG(Scene):
 
                 self.play( dota7.animate.move_to(n_line.n2p(4.5)), MaintainPositionRelativeTo(a7x,dota7) )
 
+                self.wait(0.5)
+
                 self.play( dotc1.animate.move_to(n_line.n2p(0)), MaintainPositionRelativeTo(c1x,dotc1), FadeTransform(checkmark,exmark), FadeTransform(hp,nohp) )
+
+                self.wait(0.5)
 
                 self.play( dota6.animate.move_to(n_line.n2p(-2)), MaintainPositionRelativeTo(a6x,dota6) )
                 self.play( dotc1.animate.move_to(n_line.n2p(-1)), MaintainPositionRelativeTo(c1x,dotc1) )
+
+                self.wait(0.5)
                 
                 self.play( dota7.animate.move_to(n_line.n2p(-3)), MaintainPositionRelativeTo(a7x,dota7), 
                            dotb1.animate.move_to(n_line.n2p(-0.5)), MaintainPositionRelativeTo(b1x,dotb1),
@@ -1231,6 +1237,8 @@ class D_TABLE_ENG(Scene):
                            dotf1.animate.move_to(n_line.n2p(-4)), MaintainPositionRelativeTo(f1x,dotf1)
                         )
 
+                self.wait(0.5)
+                
                 self.play( dotg1.animate.move_to(n_line.n2p(-4.5)), MaintainPositionRelativeTo(g1x,dotg1), FadeTransform(exmark,checkmark), FadeTransform(nohp,hp) )
 
                 self.wait(5)
