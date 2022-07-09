@@ -5,8 +5,8 @@ import math
 class F_EX2_ENG(Scene):
         def construct(self):
                                 
-                play_kw_fast = {"run_time": 0.25}
-                restore_time = 0.5
+                play_kw_fast = {"run_time": 0.5}
+                restore_time = 0.25
                 
         # EXAMPLE 2 OPENING SCENE
 
@@ -143,7 +143,6 @@ class F_EX2_ENG(Scene):
                 col3[0].shift(RIGHT*0.1)
 
                 colzz = VGroup(col1[0:2],col2[0:2],col3[0:2],col4[0:2])
-                self.play(TransformMatchingParts(zzgroup,colzz))
 
                 col1[0].set_color(BLUE_E)
                 col1[1].set_color(YELLOW_E)
@@ -152,7 +151,23 @@ class F_EX2_ENG(Scene):
                 col1[4].set_color(TEAL)
                 col1[5].set_color(PURPLE)
 
-                colgr.save_state()
+                first_two_rows = VGroup( col1[0:2], col2[0:2], col3[0:2], col4[0:2] )
+
+                first_three_rows = VGroup( col1[0:3], col2[0:3], col3[0:3], col4[0:3] )
+
+                first_four_rows = VGroup ( col1[0:4], col2[0:4], col3[0:4], col4[0:4] )
+
+                first_five_rows = VGroup ( col1[0:5], col2[0:5], col3[0:5], col4[0:5] )
+
+                first_six_rows = VGroup ( col1[0:6], col2[0:6], col3[0:6], col4[0:6] )
+
+                first_two_rows.save_state()
+                first_three_rows.save_state()
+                first_four_rows.save_state()
+                first_five_rows.save_state()
+                first_six_rows.save_state()
+
+                self.play(TransformMatchingParts(zzgroup,colzz))
 
                 rectver = SurroundingRectangle( col1[0:2] ).set_color(LIGHT_BROWN)
                 recthor = SurroundingRectangle( col2[0:2] ).set_color(LIGHT_BROWN)
@@ -204,9 +219,9 @@ class F_EX2_ENG(Scene):
                 b1.next_to(col1[2],ORIGIN)
                 b1.save_state()
 
-                col1[2].replace(b1,stretch=True)
+                # col1[2].replace(b1,stretch=True)
 
-                rectelem = SurroundingRectangle( col1[2] ).set_color(RED)
+                rectelem = SurroundingRectangle( b1 ).set_color(RED)
                 self.play(ShowCreation(rectelem),**play_kw_fast)
 
                 self.play(Write(b1),**play_kw_fast)
@@ -224,8 +239,7 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
 
-                colgr.restore()
-                b1.restore()
+                self.play(Restore(first_two_rows), Restore(b1), run_time=restore_time)
 
         # SHOW b2
 
@@ -250,10 +264,10 @@ class F_EX2_ENG(Scene):
                 b2.next_to(col2[2],ORIGIN)
                 b2.save_state()
 
-                col2[2].replace(b2,stretch=True)
+                # col2[2].replace(b2,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col2[2] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( b2 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(b2),**play_kw_fast)
@@ -270,8 +284,7 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
 
-                colgr.restore()
-                b2.restore()
+                self.play(Restore(first_two_rows), Restore(b2), run_time=restore_time)
 
         #SHOW b3
 
@@ -296,10 +309,10 @@ class F_EX2_ENG(Scene):
                 b3.next_to(col3[2],ORIGIN)
                 b3.save_state()
 
-                col3[2].replace(b3,stretch=True)
+                # col3[2].replace(b3,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col3[2] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( b3 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(b3),**play_kw_fast)
@@ -317,14 +330,13 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                b3.restore()
+                self.play(Restore(first_two_rows), Restore(b3), run_time=restore_time)
 
         #SHOW b4
 
                 self.play( Write(col4[2]),**play_kw_fast )
                 
-                colgr.restore()
+                # # # restore
 
                 self.play( ReplacementTransform(b1,col1[2]),**play_kw_fast )
 
@@ -363,10 +375,10 @@ class F_EX2_ENG(Scene):
                 c1.next_to(col1[3],ORIGIN)
                 c1.save_state()
 
-                col1[3].replace(c1,stretch=True)
+                # col1[3].replace(c1,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col1[3] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( c1 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(c1),**play_kw_fast)
@@ -383,8 +395,7 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                c1.restore()
+                self.play(Restore(first_three_rows), Restore(c1), run_time=restore_time)
                 
 
         #SHOW c2
@@ -410,10 +421,10 @@ class F_EX2_ENG(Scene):
                 c2.next_to(col2[3],ORIGIN)
                 c2.save_state()
 
-                col2[3].replace(c2,stretch=True)                
+                # col2[3].replace(c2,stretch=True)                
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col2[3] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( c2 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(c2),**play_kw_fast)
@@ -430,8 +441,7 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                c2.restore()
+                self.play(Restore(first_three_rows), Restore(c2), run_time=restore_time)
 
         #SHOW c3
 
@@ -456,10 +466,10 @@ class F_EX2_ENG(Scene):
                 c3.next_to(col3[3],ORIGIN)
                 c3.save_state()
 
-                col3[3].replace(c3,stretch=True)     
+                # col3[3].replace(c3,stretch=True)     
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col3[3] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( c3 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(c3),**play_kw_fast)
@@ -476,15 +486,14 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                c3.restore()
+                self.play(Restore(first_three_rows), Restore(c3), run_time=restore_time)
 
 
         #SHOW c4
 
                 self.play(Write(col4[3]),**play_kw_fast)
                 
-                colgr.restore()               
+                # # # restore
 
                 self.play( ReplacementTransform(c1,col1[3]),**play_kw_fast )
 
@@ -523,10 +532,10 @@ class F_EX2_ENG(Scene):
                 d1.next_to(col1[4],ORIGIN)
                 d1.save_state()
 
-                col1[4].replace(d1,stretch=True) 
+                # col1[4].replace(d1,stretch=True) 
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col1[4] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( d1 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(d1),**play_kw_fast)
@@ -543,8 +552,7 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                d1.restore()
+                self.play(Restore(first_four_rows), Restore(d1), run_time=restore_time)
 
         #SHOW d2
 
@@ -569,10 +577,10 @@ class F_EX2_ENG(Scene):
                 d2.next_to(col2[4],ORIGIN)
                 d2.save_state()
 
-                col2[4].replace(d2,stretch=True) 
+                # col2[4].replace(d2,stretch=True) 
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col2[4] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( d2 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(d2),**play_kw_fast)
@@ -589,8 +597,7 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                d2.restore()
+                self.play(Restore(first_four_rows), Restore(d2), run_time=restore_time)
 
         #SHOW d3
 
@@ -615,10 +622,10 @@ class F_EX2_ENG(Scene):
                 d3.next_to(col3[4],ORIGIN)
                 d3.save_state()
 
-                col3[4].replace(d3,stretch=True) 
+                # col3[4].replace(d3,stretch=True) 
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col3[4] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( d3 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(d3),**play_kw_fast)
@@ -635,14 +642,13 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                d3.restore()
+                self.play(Restore(first_four_rows), Restore(d3), run_time=restore_time)
 
         #SHOW d4
 
                 self.play(Write(col4[4]),**play_kw_fast)
                 
-                colgr.restore()
+                # # # restore
 
                 self.play( ReplacementTransform(d1,col1[4]),**play_kw_fast )
 
@@ -680,10 +686,10 @@ class F_EX2_ENG(Scene):
                 e1.next_to(col1[5],ORIGIN)
                 e1.save_state()
 
-                col1[5].replace(e1,stretch=True)
+                # col1[5].replace(e1,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col1[5] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( e1 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(e1),**play_kw_fast)
@@ -700,8 +706,7 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                e1.restore()
+                self.play(Restore(first_five_rows), Restore(e1), run_time=restore_time)
 
         #SHOW e2
 
@@ -726,10 +731,10 @@ class F_EX2_ENG(Scene):
                 e2.next_to(col2[5],ORIGIN)
                 e2.save_state()
 
-                col2[5].replace(e2,stretch=True) 
+                # col2[5].replace(e2,stretch=True) 
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col2[5] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( e2 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(e2),**play_kw_fast)
@@ -746,8 +751,7 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                e2.restore()
+                self.play(Restore(first_five_rows), Restore(e2), run_time=restore_time)
 
         #SHOW e3
 
@@ -772,10 +776,10 @@ class F_EX2_ENG(Scene):
                 e3.next_to(col3[5],ORIGIN)
                 e3.save_state()
 
-                col3[5].replace(e3,stretch=True)
+                # col3[5].replace(e3,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col3[5] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( e3 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(e3),**play_kw_fast)
@@ -792,8 +796,7 @@ class F_EX2_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                e3.restore()
+                self.play(Restore(first_five_rows), Restore(e3), run_time=restore_time)
 
 
         #SHOW e4

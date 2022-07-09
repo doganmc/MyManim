@@ -5,9 +5,10 @@ class D_TABLE_ENG(Scene):
 
         def construct(self):
                 
-                play_kw_fast = {"run_time": 0.5}
+                play_kw_fast = {"run_time": 0.25}
                 play_kw = {"run_time": 4}
-                restore_time = 0.5
+                restore_time = 0.25
+                restore_bc = 0.5
 
                 
         #SHOW TEMPLATE POLYNOM AND ZIG ZAG PATTERN FIRST
@@ -113,7 +114,27 @@ class D_TABLE_ENG(Scene):
                 colzz = VGroup( col1[0:2], col2[0:2], col3[0:2], col4[0:2], col5[0:2] )
                 self.play(Write(colzz))
 
-                colgr.save_state()
+                first_two_rows = VGroup( col1[0:2], col2[0:2], col3[0:2], col4[0:2], col5[0:2] )
+
+                first_three_rows = VGroup( col1[0:3], col2[0:3], col3[0:3], col4[0:3], col5[0:3] )
+
+                first_four_rows = VGroup ( col1[0:4], col2[0:4], col3[0:4], col4[0:4], col5[0:4] )
+
+                first_five_rows = VGroup ( col1[0:5], col2[0:5], col3[0:5], col4[0:5], col5[0:5] )
+
+                first_six_rows = VGroup ( col1[0:6], col2[0:6], col3[0:6], col4[0:6], col5[0:6] )
+
+                first_seven_rows = VGroup ( col1[0:7], col2[0:7], col3[0:7], col4[0:7], col5[0:7] )
+
+                first_eight_rows = VGroup ( col1[0:8], col2[0:8], col3[0:8], col4[0:8], col5[0:8] )
+
+                first_two_rows.save_state()
+                first_three_rows.save_state()
+                first_four_rows.save_state()
+                first_five_rows.save_state()
+                first_six_rows.save_state()
+                first_seven_rows.save_state()
+                first_eight_rows.save_state()
 
                 rectver = SurroundingRectangle( col1[0:2] ).set_color(LIGHT_BROWN)
                 recthor = SurroundingRectangle( col2[0:2] ).set_color(LIGHT_BROWN)
@@ -140,10 +161,9 @@ class D_TABLE_ENG(Scene):
                 b1.next_to(col1[2],ORIGIN)
                 b1.save_state()
 
-                col1[2].replace(b1,stretch=True)
-
-                rectelem = SurroundingRectangle( col1[2] ).set_color(RED)
-                ## self.play(ShowCreation(rectelem)) #the legacy play for rectelem
+                #col1[2].replace(b1,stretch=True)
+                
+                rectelem = SurroundingRectangle( b1 ).set_color(RED)
 
                 #CameraFrame
                 frame = self.camera.frame
@@ -208,8 +228,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
 
-                colgr.restore()
-                b1.restore()
+                self.play(Restore(first_two_rows), Restore(b1), run_time=restore_bc)
 
                 self.play(Restore(self.camera.frame))
 
@@ -237,10 +256,10 @@ class D_TABLE_ENG(Scene):
                 b2.next_to(col2[2],ORIGIN)
                 b2.save_state()
 
-                col2[2].replace(b2,stretch=True)
+                # col2[2].replace(b2,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col2[2] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( b2 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem))
 
                 self.play(Write(b2))
@@ -257,8 +276,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
 
-                colgr.restore()
-                b2.restore()
+                self.play(Restore(first_two_rows), Restore(b2), run_time=restore_bc)
 
         #SHOW b3
 
@@ -283,10 +301,10 @@ class D_TABLE_ENG(Scene):
                 b3.next_to(col3[2],ORIGIN)
                 b3.save_state()
 
-                col3[2].replace(b3,stretch=True)
+                # col3[2].replace(b3,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col3[2] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( b3 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem))
 
                 self.play(Write(b3))
@@ -303,8 +321,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                b3.restore()
+                self.play(Restore(first_two_rows), Restore(b3), run_time=restore_bc)
 
         #SHOW b4
 
@@ -329,10 +346,10 @@ class D_TABLE_ENG(Scene):
                 b4.next_to(col4[2],ORIGIN)
                 b4.save_state()
 
-                col4[2].replace(b4,stretch=True)
+                # col4[2].replace(b4,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col4[2] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( b4 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem))
 
                 self.play(Write(b4))
@@ -351,9 +368,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                b4.restore()
-
+                self.play(Restore(first_two_rows), Restore(b4), run_time=restore_bc)
 
                 self.play( ReplacementTransform(b1,col1[2]) )
                 self.play( ReplacementTransform(b2,col2[2]) )
@@ -386,10 +401,10 @@ class D_TABLE_ENG(Scene):
                 c1.next_to(col1[3],ORIGIN)
                 c1.save_state()
 
-                col1[3].replace(c1,stretch=True)
+                # col1[3].replace(c1,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col1[3] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( c1 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem))
 
                 self.play(Write(c1))
@@ -406,8 +421,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                c1.restore()                
+                self.play(Restore(first_three_rows), Restore(c1), run_time=restore_bc)               
 
         #SHOW c2
 
@@ -432,10 +446,10 @@ class D_TABLE_ENG(Scene):
                 c2.next_to(col2[3],ORIGIN)
                 c2.save_state()
 
-                col2[3].replace(c2,stretch=True)                
+                # col2[3].replace(c2,stretch=True)                
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col2[3] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( c2 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem))
 
                 self.play(Write(c2))
@@ -452,8 +466,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                c2.restore()
+                self.play(Restore(first_three_rows), Restore(c2), run_time=restore_bc)
 
         #SHOW c3
 
@@ -478,10 +491,10 @@ class D_TABLE_ENG(Scene):
                 c3.next_to(col3[3],ORIGIN)
                 c3.save_state()
 
-                col3[3].replace(c3,stretch=True)     
+                # col3[3].replace(c3,stretch=True)     
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col3[3] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( c3 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem))
 
                 self.play(Write(c3))
@@ -498,8 +511,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                c3.restore()
+                self.play(Restore(first_three_rows), Restore(c3), run_time=restore_bc)
 
 
         #SHOW c4
@@ -525,10 +537,10 @@ class D_TABLE_ENG(Scene):
                 c4.next_to(col4[3],ORIGIN)
                 c4.save_state()
 
-                col4[3].replace(c4,stretch=True) 
+                # col4[3].replace(c4,stretch=True) 
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col4[3] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( c4 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem))
 
                 self.play(Write(c4))
@@ -547,8 +559,7 @@ class D_TABLE_ENG(Scene):
                 
                 self.wait(restore_time)
 
-                colgr.restore()
-                c4.restore()
+                self.play(Restore(first_three_rows), Restore(c4), run_time=restore_bc)
 
                 saycalc = Tex(r"\text{The calculation continues until there are }", r"(n+1)", r"\text{ rows in the table.}").scale(0.8).to_corner(DOWN)
                 saycalc[1].set_color(RED)
@@ -584,10 +595,10 @@ class D_TABLE_ENG(Scene):
                 d1.next_to(col1[4],ORIGIN)
                 d1.save_state()
 
-                col1[4].replace(d1,stretch=True)
+                # col1[4].replace(d1,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col1[4] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( d1 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(d1),**play_kw_fast)
@@ -604,8 +615,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                d1.restore()
+                self.play(Restore(first_four_rows), Restore(d1), run_time=restore_time)
 
         #SHOW d2
 
@@ -630,10 +640,10 @@ class D_TABLE_ENG(Scene):
                 d2.next_to(col2[4],ORIGIN)
                 d2.save_state()
 
-                col2[4].replace(d2,stretch=True) 
+                # col2[4].replace(d2,stretch=True) 
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col2[4] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( d2 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(d2),**play_kw_fast)
@@ -650,8 +660,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                d2.restore()
+                self.play(Restore(first_four_rows), Restore(d2), run_time=restore_time)
 
         #SHOW d3
 
@@ -676,10 +685,10 @@ class D_TABLE_ENG(Scene):
                 d3.next_to(col3[4],ORIGIN)
                 d3.save_state()
 
-                col3[4].replace(d3,stretch=True) 
+                # col3[4].replace(d3,stretch=True) 
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col3[4] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( d3 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(d3),**play_kw_fast)
@@ -696,8 +705,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                d3.restore()
+                self.play(Restore(first_four_rows), Restore(d3), run_time=restore_time)
 
         #SHOW d4
 
@@ -722,10 +730,10 @@ class D_TABLE_ENG(Scene):
                 d4.next_to(col4[4],ORIGIN)
                 d4.save_state()
 
-                col4[4].replace(d4,stretch=True) 
+                # col4[4].replace(d4,stretch=True) 
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col4[4] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( d4 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(d4),**play_kw_fast)
@@ -744,8 +752,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                d4.restore()
+                self.play(Restore(first_four_rows), Restore(d4), run_time=restore_time)
 
                 self.play( ReplacementTransform(d1,col1[4]),**play_kw_fast )
                 self.play( ReplacementTransform(d2,col2[4]),**play_kw_fast )
@@ -778,10 +785,10 @@ class D_TABLE_ENG(Scene):
                 e1.next_to(col1[5],ORIGIN)
                 e1.save_state()
 
-                col1[5].replace(e1,stretch=True) 
+                # col1[5].replace(e1,stretch=True) 
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col1[5] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( e1 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(e1),**play_kw_fast)
@@ -798,8 +805,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                e1.restore()
+                self.play(Restore(first_five_rows), Restore(e1), run_time=restore_time)
 
         #SHOW e2
 
@@ -824,10 +830,10 @@ class D_TABLE_ENG(Scene):
                 e2.next_to(col2[5],ORIGIN)
                 e2.save_state()
 
-                col2[5].replace(e2,stretch=True)
+                # col2[5].replace(e2,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col2[5] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( e2 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(e2),**play_kw_fast)
@@ -844,8 +850,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                e2.restore()
+                self.play(Restore(first_five_rows), Restore(e2), run_time=restore_time)
 
         #SHOW e3
 
@@ -916,10 +921,10 @@ class D_TABLE_ENG(Scene):
                 f1.next_to(col1[6],ORIGIN)
                 f1.save_state()
 
-                col1[6].replace(f1,stretch=True)
+                # col1[6].replace(f1,stretch=True)
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col1[6] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( f1 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(f1),**play_kw_fast)
@@ -936,8 +941,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                f1.restore()
+                self.play(Restore(first_six_rows), Restore(f1), run_time=restore_time)
 
         #SHOW f2
 
@@ -1025,10 +1029,10 @@ class D_TABLE_ENG(Scene):
                 g1.next_to(col1[7],ORIGIN)
                 g1.save_state()
 
-                col1[7].replace(g1,stretch=True) 
+                # col1[7].replace(g1,stretch=True) 
 
                 rectelem.generate_target()
-                rectelem.target.become( SurroundingRectangle( col1[7] ).set_color(RED) )
+                rectelem.target.become( SurroundingRectangle( g1 ).set_color(RED) )
                 self.play(MoveToTarget(rectelem),**play_kw_fast)
 
                 self.play(Write(g1),**play_kw_fast)
@@ -1045,8 +1049,7 @@ class D_TABLE_ENG(Scene):
 
                 self.wait(restore_time)
                 
-                colgr.restore()
-                g1.restore()
+                self.play(Restore(first_seven_rows), Restore(g1), run_time=restore_time)
 
         #SHOW g2
 
